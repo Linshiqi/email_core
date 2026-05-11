@@ -101,8 +101,7 @@ impl ThreadEnvelopes for ThreadImapEnvelopes {
                         let eb = envelopes.get(&b.to_string()).unwrap();
                         match envelopes.get(&a.to_string()) {
                             Some(ea) => {
-                                final_graph
-                                    .add_edge(ea.as_threaded(), eb.as_threaded(), *w);
+                                final_graph.add_edge(ea.as_threaded(), eb.as_threaded(), *w);
                             }
                             None => {
                                 let ea = ThreadedEnvelope {
@@ -198,8 +197,7 @@ impl ThreadEnvelopes for ThreadImapEnvelopes {
                         let eb = envelopes.get(&b.to_string()).unwrap();
                         match envelopes.get(&a.to_string()) {
                             Some(ea) => {
-                                final_graph
-                                    .add_edge(ea.as_threaded(), eb.as_threaded(), *w);
+                                final_graph.add_edge(ea.as_threaded(), eb.as_threaded(), *w);
                             }
                             None => {
                                 let ea = ThreadedEnvelope {

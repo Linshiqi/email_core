@@ -3,9 +3,7 @@ use tracing::instrument;
 
 use super::{build_thread_graph_all, build_thread_graph_for_id, ThreadEnvelopes};
 use crate::{
-    envelope::{
-        list::ListEnvelopesOptions, Envelopes, SingleId, ThreadedEnvelopes,
-    },
+    envelope::{list::ListEnvelopesOptions, Envelopes, SingleId, ThreadedEnvelopes},
     maildir::MaildirContextSync,
     AnyResult, Error,
 };
@@ -67,10 +65,9 @@ impl ThreadEnvelopes for ThreadMaildirEnvelopes {
             .map(|e| (e.id.clone(), e))
             .collect();
 
-        let envelopes =
-            ThreadedEnvelopes::new(envelopes, move |envelopes| {
-                build_thread_graph_for_id(envelopes, id.as_str())
-            });
+        let envelopes = ThreadedEnvelopes::new(envelopes, move |envelopes| {
+            build_thread_graph_for_id(envelopes, id.as_str())
+        });
 
         Ok(envelopes)
     }

@@ -9,9 +9,7 @@ use std::collections::HashMap;
 use async_trait::async_trait;
 use petgraph::{algo::astar, graphmap::DiGraphMap, Direction};
 
-use super::{
-    list::ListEnvelopesOptions, Envelope, SingleId, ThreadedEnvelope, ThreadedEnvelopes,
-};
+use super::{list::ListEnvelopesOptions, Envelope, SingleId, ThreadedEnvelope, ThreadedEnvelopes};
 use crate::AnyResult;
 
 #[async_trait]

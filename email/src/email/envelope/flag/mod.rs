@@ -41,10 +41,7 @@ use crate::email::error::Error;
 /// tries to be as simple as possible and should fit most of the use
 /// cases.
 #[derive(Clone, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
-#[cfg_attr(
-    feature = "derive",
-    derive(serde::Serialize, serde::Deserialize)
-)]
+#[cfg_attr(feature = "derive", derive(serde::Serialize, serde::Deserialize))]
 pub enum Flag {
     /// Flag used when the email envelope has been opened.
     Seen,
@@ -140,10 +137,7 @@ impl fmt::Display for Flag {
 /// The list of flags that can be attached to an email envelope. It
 /// uses a [`std::collections::HashSet`] to prevent duplicates.
 #[derive(Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd)]
-#[cfg_attr(
-    feature = "derive",
-    derive(serde::Serialize, serde::Deserialize)
-)]
+#[cfg_attr(feature = "derive", derive(serde::Serialize, serde::Deserialize))]
 pub struct Flags(BTreeSet<Flag>);
 
 impl Hash for Flags {
