@@ -83,7 +83,7 @@ impl From<&str> for Flag {
             deleted if deleted.eq_ignore_ascii_case("deleted") => Flag::Deleted,
             trashed if trashed.eq_ignore_ascii_case("trashed") => Flag::Deleted,
             draft if draft.eq_ignore_ascii_case("draft") => Flag::Draft,
-            draft if draft.eq_ignore_ascii_case("draft") => Flag::Draft,
+            drafts if drafts.eq_ignore_ascii_case("drafts") => Flag::Draft,
             flag => Flag::Custom(flag.into()),
         }
     }
@@ -200,7 +200,8 @@ impl FromStr for Flags {
 
     fn from_str(s: &str) -> Result<Self, Error> {
         Ok(Flags(
-            s.split_whitespace()
+            s.split(|c: char| c == ',' || c.is_whitespace())
+                .filter(|segment| !segment.is_empty())
                 .map(|flag| flag.parse())
                 .collect::<Result<_, _>>()?,
         ))
